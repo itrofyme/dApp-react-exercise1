@@ -1,21 +1,9 @@
 import Player from "../Player/Player";
 import Box from "@material-ui/core/Box";
 import { ColorProvider } from "../ColorContext";
-import { makeStyles } from "@material-ui/core/styles";
-
-const useStyles = makeStyles({
-  parent: {
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-evenly",
-    marginTop: 40
-  }
-});
+import styles from "./Players.module.css";
 
 const Players = () => {
-  const classes = useStyles();
-
   const players = {
     1: { id: 1},
     2: { id: 2},
@@ -25,11 +13,9 @@ const Players = () => {
 
   return (
     <ColorProvider>
-      <Box className={classes.parent}>
+      <Box className={styles.playersWrapper}>
         {Object.entries(players).map(([id, player]) => (
-          <Box key={id}>
-            <Player player={player} />
-          </Box>
+          <Player key={id} id={player.id} />
         ))}
       </Box>
     </ColorProvider>

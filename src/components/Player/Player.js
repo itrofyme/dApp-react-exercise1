@@ -1,31 +1,13 @@
-import { makeStyles } from "@material-ui/core/styles";
+import { useState } from 'react';
 import ColorSelector from "../ColorSelector/ColorSelector";
 import Card from "@material-ui/core/Card";
 import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from '@material-ui/core/Avatar';
-import { useState } from 'react'
+import styles from "./Player.module.css";
 
-const useStyles = makeStyles({
-  root: {
-    width: 300,
-    marginBottom: 40,
-    marginLeft: 15,
-    marginRight: 15
-  },
-  media: {
-    height: 30,
-  },
-  avatar: {
-    fontSize: 14,
-    backgroundColor: "black",
-    color: "white"
-  },
-});
-
-const Player = ({ player }) => {
-  const classes = useStyles();
+const Player = ({ id }) => {
   const [ color, setColor ] = useState("");
 
   const changeAvatarColor = (color) => {
@@ -33,15 +15,15 @@ const Player = ({ player }) => {
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={styles.playerCard}>
       <CardActionArea>
         <CardHeader
           avatar={
-            <Avatar className={classes.avatar} style={{backgroundColor: color}}>
-              P{player.id}
+            <Avatar className={styles.avatar} style={{backgroundColor: color}}>
+              P{id}
             </Avatar>
           }
-          title={"Player " + player.id}
+          title={"Player " + id}
         />
       </CardActionArea>
       <CardActions>
