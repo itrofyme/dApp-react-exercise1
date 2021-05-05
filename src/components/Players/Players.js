@@ -1,25 +1,26 @@
 import Player from "../Player/Player";
 import Box from "@material-ui/core/Box";
-import { ColorProvider } from "../ColorContext";
 import styles from "./Players.module.css";
 
-const Players = () => {
-  const players = {
-    1: { id: 1},
-    2: { id: 2},
-    3: { id: 3},
-    4: { id: 4},
-  };
-
-  return (
-    <ColorProvider>
+const Players = ({ user, fetchedColors, colorsInUse, changeColor }) => {
+  if (user === null) {
+    return null;
+  } else {
+    return (
       <Box className={styles.playersWrapper}>
-        {Object.entries(players).map(([id, player]) => (
-          <Player key={id} id={player.id} />
+        {Object.entries(fetchedColors).map(([id, color]) => (
+          <Player
+            key={id}
+            id={id}
+            user={user}
+            fetchedColor={color.color}
+            colorsInUse={colorsInUse}
+            changeColor={changeColor}
+          />
         ))}
       </Box>
-    </ColorProvider>
-  );
+    );
+  }
 };
 
 export default Players;
