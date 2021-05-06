@@ -1,0 +1,10 @@
+.playerCard {
+  width: 245px;
+  height: 155px;
+  margin: 10px;
+}
+
+.avatar {
+  font-size: 14px !important;
+  font-weight: bold;
+}
